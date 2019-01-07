@@ -21,10 +21,10 @@ package org.apache.flink.streaming.connectors.fs.bucketing;
 import org.apache.flink.streaming.connectors.fs.Clock;
 import org.apache.flink.util.Preconditions;
 
+import org.apache.flink.shaded.guava18.com.google.common.base.MoreObjects;
+
 import org.apache.hadoop.fs.Path;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -66,7 +66,7 @@ public class DateTimeBucketer<T> implements Bucketer<T> {
 
 	private final ZoneId zoneId;
 
-	private transient DateTimeFormatter dateTimeFormatter;
+	private final DateTimeFormatter dateTimeFormatter;
 
 	/**
 	 * Creates a new {@code DateTimeBucketer} with format string {@code "yyyy-MM-dd--HH"} using JVM's default timezone.
@@ -108,12 +108,6 @@ public class DateTimeBucketer<T> implements Bucketer<T> {
 		this.dateTimeFormatter = DateTimeFormatter.ofPattern(this.formatString).withZone(zoneId);
 	}
 
-	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-		in.defaultReadObject();
-
-		this.dateTimeFormatter = DateTimeFormatter.ofPattern(formatString).withZone(zoneId);
-	}
-
 	@Override
 	public Path getBucketPath(Clock clock, Path basePath, T element) {
 		String newDateTimeString = dateTimeFormatter.format(Instant.ofEpochMilli(clock.currentTimeMillis()));
@@ -122,9 +116,9 @@ public class DateTimeBucketer<T> implements Bucketer<T> {
 
 	@Override
 	public String toString() {
-		return "DateTimeBucketer{" +
-			"formatString='" + formatString + '\'' +
-			", zoneId=" + zoneId +
-			'}';
+		return MoreObjects.toStringHelper(this)
+			.add("formatString", formatString)
+			.add("zoneId", zoneId)
+			.toString();
 	}
 }
