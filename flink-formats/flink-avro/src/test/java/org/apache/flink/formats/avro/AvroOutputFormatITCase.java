@@ -32,14 +32,14 @@ import org.apache.avro.file.DataFileReader;
 import org.apache.avro.io.DatumReader;
 import org.apache.avro.reflect.ReflectDatumReader;
 import org.apache.avro.specific.SpecificDatumReader;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
 import org.junit.Assert;
 
 import java.io.File;
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -156,11 +156,11 @@ public class AvroOutputFormatITCase extends JavaProgramTestBase {
 			user.setTypeEnum(Colors.BLUE);
 			user.setTypeMap(Collections.emptyMap());
 			user.setTypeBytes(ByteBuffer.allocate(10));
-			user.setTypeDate(LocalDate.parse("2014-03-01"));
-			user.setTypeTimeMillis(LocalTime.parse("12:12:12"));
+			user.setTypeDate(LocalDate.of(2014, 3, 1));
+			user.setTypeTimeMillis(LocalTime.of(12, 12, 12));
 			user.setTypeTimeMicros(123456);
-			user.setTypeTimestampMillis(DateTime.parse("2014-03-01T12:12:12.321Z"));
-			user.setTypeTimestampMicros(123456L);
+			user.setTypeTimestampMillis(Instant.parse("2014-03-01T12:12:12.321Z"));
+			user.setTypeTimestampMicros(Instant.ofEpochMilli(123456L));
 			// 20.00
 			user.setTypeDecimalBytes(ByteBuffer.wrap(BigDecimal.valueOf(2000, 2).unscaledValue().toByteArray()));
 			// 20.00

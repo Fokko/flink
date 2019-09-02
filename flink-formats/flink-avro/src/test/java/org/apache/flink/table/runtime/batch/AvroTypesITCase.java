@@ -34,15 +34,15 @@ import org.apache.flink.test.util.TestBaseUtils;
 import org.apache.flink.types.Row;
 
 import org.apache.avro.util.Utf8;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -80,11 +80,11 @@ public class AvroTypesITCase extends TableProgramsClusterTestBase {
 							.setState("Berlin")
 							.setZip("12049").build())
 			.setTypeBytes(ByteBuffer.allocate(10))
-			.setTypeDate(LocalDate.parse("2014-03-01"))
-			.setTypeTimeMillis(LocalTime.parse("12:12:12"))
+			.setTypeDate(LocalDate.of(2014, 3, 1))
+			.setTypeTimeMillis(LocalTime.of(12, 12, 12))
 			.setTypeTimeMicros(123456)
-			.setTypeTimestampMillis(DateTime.parse("2014-03-01T12:12:12.321Z"))
-			.setTypeTimestampMicros(123456L)
+			.setTypeTimestampMillis(Instant.parse("2014-03-01T12:12:12.321Z"))
+			.setTypeTimestampMicros(Instant.ofEpochMilli(123456L))
 			.setTypeDecimalBytes(ByteBuffer.wrap(BigDecimal.valueOf(2000, 2).unscaledValue().toByteArray()))
 			.setTypeDecimalFixed(new Fixed2(BigDecimal.valueOf(2000, 2).unscaledValue().toByteArray()))
 			.build();
@@ -103,12 +103,12 @@ public class AvroTypesITCase extends TableProgramsClusterTestBase {
 			.setTypeMap(new HashMap<>())
 			.setTypeFixed(new Fixed16())
 			.setTypeUnion(null)
-			.setTypeNested(null).setTypeDate(LocalDate.parse("2014-03-01"))
+			.setTypeNested(null).setTypeDate(LocalDate.of(2014, 3, 1))
 			.setTypeBytes(ByteBuffer.allocate(10))
-			.setTypeTimeMillis(LocalTime.parse("12:12:12"))
+			.setTypeTimeMillis(LocalTime.of(12, 12, 12))
 			.setTypeTimeMicros(123456)
-			.setTypeTimestampMillis(DateTime.parse("2014-03-01T12:12:12.321Z"))
-			.setTypeTimestampMicros(123456L)
+			.setTypeTimestampMillis(Instant.parse("2014-03-01T12:12:12.321Z"))
+			.setTypeTimestampMicros(Instant.ofEpochMilli(123456L))
 			.setTypeDecimalBytes(ByteBuffer.wrap(BigDecimal.valueOf(2000, 2).unscaledValue().toByteArray()))
 			.setTypeDecimalFixed(new Fixed2(BigDecimal.valueOf(2000, 2).unscaledValue().toByteArray()))
 			.build();
@@ -129,11 +129,11 @@ public class AvroTypesITCase extends TableProgramsClusterTestBase {
 			.setTypeUnion(null)
 			.setTypeNested(null)
 			.setTypeBytes(ByteBuffer.allocate(10))
-			.setTypeDate(LocalDate.parse("2014-03-01"))
-			.setTypeTimeMillis(LocalTime.parse("12:12:12"))
+			.setTypeDate(LocalDate.of(2014, 3, 1))
+			.setTypeTimeMillis(LocalTime.of(12, 12, 12))
 			.setTypeTimeMicros(123456)
-			.setTypeTimestampMillis(DateTime.parse("2014-03-01T12:12:12.321Z"))
-			.setTypeTimestampMicros(123456L)
+			.setTypeTimestampMillis(Instant.parse("2014-03-01T12:12:12.321Z"))
+			.setTypeTimestampMicros(Instant.ofEpochMilli(123456L))
 			.setTypeDecimalBytes(ByteBuffer.wrap(BigDecimal.valueOf(2000, 2).unscaledValue().toByteArray()))
 			.setTypeDecimalFixed(new Fixed2(BigDecimal.valueOf(2000, 2).unscaledValue().toByteArray()))
 			.build();
