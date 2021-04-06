@@ -436,7 +436,7 @@ under the License.
 			<dependency>
 				<groupId>org.tukaani</groupId>
 				<artifactId>xz</artifactId>
-				<version>1.5</version>
+				<version>1.9</version>
 			</dependency>
 
 			<!-- Make sure we use a consistent commons-cli version throughout the project -->
