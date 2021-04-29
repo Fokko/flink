@@ -1,0 +1,75 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: com.facebook.presto.hadoop:hadoop-apache2
+    versions:
+    - "< 2.8, > 2.7.3.pre.1"
+  - dependency-name: commons-configuration:commons-configuration
+    versions:
+    - "< 1.10.1, >= 1.10.0.a"
+  - dependency-name: com.rabbitmq:amqp-client
+    versions:
+    - "< 5.6, >= 5.5.a"
+  - dependency-name: org.apache.hadoop:hadoop-aws
+    versions:
+    - "< 3.1.2, >= 3.1.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-client
+    versions:
+    - "< 3.0.4, >= 3.0.3.a"
+  - dependency-name: org.apache.hadoop:hadoop-client
+    versions:
+    - "< 3.2, >= 3.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-common
+    versions:
+    - "< 3.1.2, >= 3.1.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-hdfs
+    versions:
+    - "< 3.1.2, >= 3.1.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-mapreduce-client-core
+    versions:
+    - "< 3.1.2, >= 3.1.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-minicluster
+    versions:
+    - "< 3.1.2, >= 3.1.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-openstack
+    versions:
+    - "< 3.0.4, >= 3.0.3.a"
+  - dependency-name: org.apache.hadoop:hadoop-openstack
+    versions:
+    - "< 3.2, >= 3.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-yarn-client
+    versions:
+    - "< 3.1.2, >= 3.1.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-yarn-common
+    versions:
+    - "< 3.1.2, >= 3.1.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-yarn-server-resourcemanager
+    versions:
+    - "< 3.1.2, >= 3.1.1.a"
+  - dependency-name: org.apache.hadoop:hadoop-yarn-server-tests
+    versions:
+    - "< 3.1.2, >= 3.1.1.a"
+  - dependency-name: org.apache.nifi:nifi-site-to-site-client
+    versions:
+    - "< 1.9, >= 1.8.a"
+  - dependency-name: org.codehaus.janino:commons-compiler
+    versions:
+    - "< 3.0.12, >= 3.0.11.a"
+  - dependency-name: org.codehaus.mojo:exec-maven-plugin
+    versions:
+    - "< 1.6.1, >= 1.6.0.a"
+  - dependency-name: org.elasticsearch:elasticsearch
+    versions:
+    - 7.10.1
+  - dependency-name: org.apache.mesos:mesos
+    versions:
+    - 1.7.2
+  - dependency-name: org.tukaani:xz
+    versions:
+    - "1.8"
